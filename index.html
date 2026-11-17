@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semsar Pro V3 | سمسار - المنصة الوطنية للوساطة الرقمية</title>
+  <title>Semsar Pro | سمسار - المنصة الوطنية للوساطة الرقمية</title>
   <style>
     :root {
       --primary: #059669;
@@ -20,12 +20,12 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     body { background-color: var(--bg); color: var(--text); padding-bottom: 70px; }
     
-    /* Top Bar */
-    .top-bar { background: var(--secondary); color: #94a3b8; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
-    .top-bar .admin-link { color: #38bdf8; cursor: pointer; font-weight: 700; text-decoration: underline; }
+    /* Top Bar - Clean and 100% Public */
+    .top-bar { background: var(--secondary); color: #94a3b8; font-size: 0.75rem; padding: 7px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .top-bar .guarantee { color: #34d399; font-weight: 600; }
 
     header { background: #ffffff; border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
-    .logo { font-size: 1.4rem; font-weight: 900; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+    .logo { font-size: 1.4rem; font-weight: 900; color: var(--primary); display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
     .logo span { color: var(--secondary); font-weight: 800; font-size: 1.2rem; }
     
     .nav-actions { display: flex; align-items: center; gap: 8px; }
@@ -86,7 +86,7 @@
     .pay-option-title { font-weight: 700; font-size: 0.9rem; color: #0f172a; display: flex; align-items: center; justify-content: space-between; }
     .pay-option-desc { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
 
-    /* Admin Dashboard Panel */
+    /* Secret Admin Dashboard Panel */
     .admin-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 20px; }
     .stat-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 12px; text-align: center; }
     .stat-val { font-size: 1.3rem; font-weight: 900; color: var(--primary); }
@@ -105,14 +105,15 @@
 </head>
 <body>
 
-  <!-- Top Announcement Bar with Secret Admin Access -->
+  <!-- Top Announcement Bar - 100% Clean (No Admin Link) -->
   <div class="top-bar">
-    <div>🇲🇦 المنصة الوطنية للوساطة الرقمية</div>
-    <div class="admin-link" onclick="openAdminPrompt()">🔐 لوحة الإدارة (Admin)</div>
+    <div>🇲🇦 المنصة الوطنية للوساطة الرقمية المباشرة</div>
+    <div class="guarantee">ضمان الجدية والأمان 100%</div>
   </div>
 
   <header>
-    <div class="logo">⚡ Semsar <span>سمسار</span></div>
+    <!-- Logo with Secret 3-Click Trigger -->
+    <div class="logo" onclick="handleLogoClick()" title="Semsar">⚡ Semsar <span>سمسار</span></div>
     <div class="nav-actions">
       <button class="btn-add" onclick="openAddModal()">➕ أضف إعلانك</button>
       <div class="lang-btns">
@@ -130,7 +131,6 @@
   </div>
 
   <div class="container">
-    <!-- Filter Card -->
     <div class="filter-card">
       <div class="tabs">
         <div class="tab-btn active" id="tab-real" onclick="filterCategory('realestate')">🏢 عقارات وشقق</div>
@@ -154,11 +154,10 @@
       </div>
     </div>
 
-    <!-- Listings Container -->
     <div class="listings-grid" id="listingsContainer"></div>
   </div>
 
-  <!-- Real Moroccan Payment Options Modal -->
+  <!-- Real Payment Modal -->
   <div class="modal-overlay" id="payModal">
     <div class="modal">
       <h3 style="font-size: 1.15rem; font-weight: 800;">تأكيد أداء رسوم فتح الاتصال</h3>
@@ -168,7 +167,7 @@
       <div class="pay-methods">
         <div class="pay-option selected" onclick="selectPay(this)">
           <div class="pay-option-title"><span>💳 بطاقة بنكية مغربية (CMI / YouCan Pay)</span> <input type="radio" checked></div>
-          <div class="pay-option-desc">فتح فوري بالبطاقة (CIH, Attijari, BMCE, وغيرها)</div>
+          <div class="pay-option-desc">فتح فوري بالبطاقة (CIH, Attijari, وغيرها)</div>
         </div>
 
         <div class="pay-option" onclick="selectPay(this)">
@@ -233,14 +232,11 @@
     </div>
   </div>
 
-  <!-- SECRET ADMIN DASHBOARD MODAL -->
+  <!-- SECRET ADMIN DASHBOARD (Completely Hidden) -->
   <div class="modal-overlay" id="adminModal">
     <div class="modal" style="max-width: 520px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-        <h3 style="font-size: 1.2rem; font-weight: 800;">🔐 لوحة إدارة الشركة (Executive Dashboard)</h3>
-      </div>
+      <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom:15px;">🔐 لوحة إدارة الشركة (Executive Dashboard)</h3>
       
-      <!-- Stats KPIs -->
       <div class="admin-stats">
         <div class="stat-card">
           <div class="stat-val" id="adminRevenue">0 MAD</div>
@@ -248,7 +244,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-val" id="adminUnlocks">0</div>
-          <div class="stat-lbl">عمليات الفتح المؤكدة</div>
+          <div class="stat-lbl">عمليات الفتح</div>
         </div>
         <div class="stat-card">
           <div class="stat-val" id="adminListingsCount">0</div>
@@ -268,7 +264,6 @@
   </footer>
 
   <script>
-    // Initial Seed Data (Saved to localStorage on first launch)
     const initialSeed = [
       {
         id: 1,
@@ -320,7 +315,6 @@
       }
     ];
 
-    // Persistence Layer (LocalStorage Database)
     let data = JSON.parse(localStorage.getItem('semsar_data')) || initialSeed;
     let totalRevenue = parseFloat(localStorage.getItem('semsar_revenue')) || 0;
     let totalUnlocks = parseInt(localStorage.getItem('semsar_unlocks')) || 0;
@@ -414,7 +408,6 @@
       document.getElementById(`btn-${selectedItem.id}`).style.display = 'none';
       document.getElementById(`unlocked-${selectedItem.id}`).style.display = 'block';
 
-      // Record business revenue
       totalRevenue += selectedItem.fee;
       totalUnlocks += 1;
       saveState();
@@ -463,12 +456,34 @@
       closeAddModal();
       currentCategory = type;
       filterCategory(type);
-      alert('مبروك! تم نشر الإعلان وحفظه دائمًا فـ قاعدة بيانات المنصة 🚀');
+      alert('مبروك! تم نشر الإعلان وحفظه دائمًا فـ المنصة 🚀');
     }
 
-    /* SECRET ADMIN DASHBOARD LOGIC */
+    /* SECRET ADMIN TRIGGER (3 CLICKS ON LOGO OR #admin URL) */
+    let logoClicks = 0;
+    let logoTimer = null;
+    function handleLogoClick() {
+      logoClicks++;
+      clearTimeout(logoTimer);
+      if (logoClicks >= 3) {
+        logoClicks = 0;
+        openAdminPrompt();
+      } else {
+        logoTimer = setTimeout(() => { logoClicks = 0; }, 800);
+      }
+    }
+
+    window.addEventListener('hashchange', checkHashAdmin);
+    function checkHashAdmin() {
+      if (window.location.hash === '#admin') {
+        openAdminPrompt();
+        history.replaceState(null, null, window.location.pathname);
+      }
+    }
+    checkHashAdmin();
+
     function openAdminPrompt() {
-      const code = prompt("🔐 أدخل الرمز السري للإدارة (Default: 2026):");
+      const code = prompt("🔐 لوحة التحكم السرية للمدير:\nأدخل الرمز السري (Default: 2026):");
       if (code === "2026") {
         document.getElementById('adminRevenue').innerText = totalRevenue + " MAD";
         document.getElementById('adminUnlocks').innerText = totalUnlocks;
@@ -479,9 +494,7 @@
         data.forEach(item => {
           listContainer.innerHTML += `
             <div class="admin-list-item">
-              <div>
-                <strong>${item.title}</strong> (${item.city}) - ${item.price} MAD
-              </div>
+              <div><strong>${item.title}</strong> (${item.city}) - ${item.price} MAD</div>
               <div class="admin-actions">
                 <button class="btn-del" onclick="deleteListing(${item.id})">حذف 🗑️</button>
               </div>
@@ -491,7 +504,7 @@
 
         document.getElementById('adminModal').style.display = 'flex';
       } else if (code !== null) {
-        alert("❌ الرمز السري غير صحيح!");
+        alert("❌ الرمز السري خاطئ!");
       }
     }
 
@@ -500,12 +513,11 @@
     }
 
     function deleteListing(id) {
-      if(confirm("واش متأكد باغي تحذف هاد الإعلان من المنصة؟")) {
+      if(confirm("واش متأكد باغي تحذف هاد الإعلان؟")) {
         data = data.filter(i => i.id !== id);
         saveState();
         closeAdminModal();
         renderListings();
-        alert("تم حذف الإعلان بنجاح!");
       }
     }
 
@@ -529,7 +541,6 @@
       }
     }
 
-    // Launch
     renderListings();
   </script>
 </body>
