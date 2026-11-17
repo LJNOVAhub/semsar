@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semsar Pro | سمسار - المنصة الوطنية الأولى للعقارات والسيارات</title>
+  <title>Semsar Pro V3 | سمسار - المنصة الوطنية للوساطة الرقمية</title>
   <style>
     :root {
       --primary: #059669;
       --primary-dark: #047857;
-      --primary-light: #ecfdf5;
       --secondary: #0f172a;
       --accent: #f59e0b;
       --bg: #f8fafc;
@@ -16,93 +15,100 @@
       --border: #e2e8f0;
       --text: #0f172a;
       --muted: #64748b;
+      --danger: #dc2626;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 60px; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 70px; }
     
     /* Top Bar */
     .top-bar { background: var(--secondary); color: #94a3b8; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
-    .top-bar span { color: #cbd5e1; font-weight: 500; }
+    .top-bar .admin-link { color: #38bdf8; cursor: pointer; font-weight: 700; text-decoration: underline; }
 
     header { background: #ffffff; border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
     .logo { font-size: 1.4rem; font-weight: 900; color: var(--primary); display: flex; align-items: center; gap: 6px; }
     .logo span { color: var(--secondary); font-weight: 800; font-size: 1.2rem; }
     
     .nav-actions { display: flex; align-items: center; gap: 8px; }
-    .btn-add { background: var(--primary); color: white; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: 0.2s; }
+    .btn-add { background: var(--primary); color: white; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
     .btn-add:hover { background: var(--primary-dark); }
     .lang-btns button { background: #f1f5f9; border: 1px solid var(--border); padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600; }
-    .lang-btns button.active { background: var(--secondary); color: white; border-color: var(--secondary); }
+    .lang-btns button.active { background: var(--secondary); color: white; }
 
-    .hero { text-align: center; padding: 30px 15px 20px; background: linear-gradient(180deg, #ecfdf5 0%, #f8fafc 100%); }
-    .hero-badge { display: inline-block; background: #d1fae5; color: #065f46; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 10px; }
-    .hero h1 { font-size: 1.6rem; color: #064e3b; margin-bottom: 8px; font-weight: 900; }
-    .hero p { color: var(--muted); font-size: 0.9rem; max-width: 550px; margin: auto; }
+    .hero { text-align: center; padding: 25px 15px 15px; background: linear-gradient(180deg, #ecfdf5 0%, #f8fafc 100%); }
+    .hero-badge { display: inline-block; background: #d1fae5; color: #065f46; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 8px; }
+    .hero h1 { font-size: 1.5rem; color: #064e3b; margin-bottom: 6px; font-weight: 900; }
+    .hero p { color: var(--muted); font-size: 0.85rem; max-width: 550px; margin: auto; }
 
     .container { max-width: 800px; margin: auto; padding: 0 15px; }
 
-    /* Search & Filter Controls */
-    .filter-card { background: var(--card-bg); border-radius: 14px; padding: 18px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.04); margin-top: -10px; margin-bottom: 25px; }
-    .tabs { display: flex; gap: 8px; margin-bottom: 14px; }
-    .tab-btn { flex: 1; padding: 11px; border: 1px solid var(--border); border-radius: 10px; background: #f8fafc; font-weight: 700; cursor: pointer; text-align: center; font-size: 0.9rem; transition: 0.2s; }
-    .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 2px 6px rgba(5,150,105,0.3); }
+    /* Filter Card */
+    .filter-card { background: var(--card-bg); border-radius: 14px; padding: 16px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.04); margin-bottom: 20px; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    .tab-btn { flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #f8fafc; font-weight: 700; cursor: pointer; text-align: center; font-size: 0.9rem; }
+    .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
     
-    .search-input-box { margin-bottom: 12px; position: relative; }
-    .search-input-box input { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font-size: 0.95rem; outline: none; background: #f8fafc; }
-    .search-input-box input:focus { border-color: var(--primary); background: white; }
-
+    .search-input-box { margin-bottom: 10px; }
+    .search-input-box input { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; outline: none; background: #f8fafc; }
     .filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     select, .filter-grid input { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; outline: none; background: #f8fafc; }
 
-    /* Listing Cards */
+    /* Listings */
     .listings-grid { display: flex; flex-direction: column; gap: 18px; }
-    .listing-card { background: var(--card-bg); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: 0.2s; position: relative; }
-    .listing-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
-    
+    .listing-card { background: var(--card-bg); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
     .img-box { position: relative; width: 100%; height: 210px; background: #e2e8f0; }
     .img-box img { width: 100%; height: 100%; object-fit: cover; }
-    .badge-city { position: absolute; top: 12px; right: 12px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
-    .fav-btn { position: absolute; top: 12px; left: 12px; background: white; border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15); font-size: 1.1rem; }
+    .badge-city { position: absolute; top: 12px; right: 12px; background: rgba(15, 23, 42, 0.85); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
     
-    .card-body { padding: 18px; }
+    .card-body { padding: 16px; }
     .header-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .price-tag { font-size: 1.4rem; font-weight: 900; color: var(--primary); }
-    .price-tag small { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
-    .verified-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 700; color: #047857; background: #d1fae5; padding: 3px 8px; border-radius: 6px; }
+    .price-tag { font-size: 1.35rem; font-weight: 900; color: var(--primary); }
+    .verified-tag { font-size: 0.75rem; font-weight: 700; color: #047857; background: #d1fae5; padding: 3px 8px; border-radius: 6px; }
 
-    .listing-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; color: #0f172a; }
-    
-    /* Specs pills */
-    .specs-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-    .spec-pill { background: #f1f5f9; color: #475569; font-size: 0.75rem; font-weight: 600; padding: 5px 10px; border-radius: 6px; display: flex; align-items: center; gap: 4px; }
+    .listing-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; color: #0f172a; }
+    .specs-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .spec-pill { background: #f1f5f9; color: #475569; font-size: 0.75rem; font-weight: 600; padding: 4px 8px; border-radius: 6px; }
 
-    .unlock-btn { width: 100%; background: var(--secondary); color: white; border: none; padding: 13px; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.2s; }
+    .unlock-btn { width: 100%; background: var(--secondary); color: white; border: none; padding: 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: 0.2s; }
     .unlock-btn:hover { background: #1e293b; }
     .unlocked-box { display: none; background: #ecfdf5; border: 1.5px dashed #10b981; padding: 14px; border-radius: 10px; text-align: center; }
     .unlocked-phone { font-size: 1.15rem; font-weight: 900; color: var(--primary-dark); margin-bottom: 8px; }
-    .chat-btn { display: inline-flex; align-items: center; gap: 6px; background: #25d366; color: white; padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: 0 2px 6px rgba(37,211,102,0.3); }
+    .chat-btn { display: inline-block; background: #25d366; color: white; padding: 9px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
 
     /* Modals */
-    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); backdrop-filter: blur(3px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
-    .modal { background: white; width: 100%; max-width: 440px; border-radius: 16px; padding: 24px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-    .modal-price { font-size: 2.2rem; font-weight: 900; color: var(--primary); margin: 12px 0; }
-    .pay-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 13px; border-radius: 10px; font-size: 1rem; font-weight: 800; cursor: pointer; margin-top: 15px; }
-    .close-btn { background: none; border: none; color: var(--muted); font-size: 0.85rem; cursor: pointer; margin-top: 12px; font-weight: 600; }
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal { background: white; width: 100%; max-width: 440px; border-radius: 16px; padding: 22px; max-height: 90vh; overflow-y: auto; text-align: center; }
+    .close-btn { background: none; border: none; color: var(--muted); font-size: 0.85rem; cursor: pointer; margin-top: 12px; font-weight: 700; }
 
-    /* Add Listing Form */
+    /* Payment Methods Box */
+    .pay-methods { display: flex; flex-direction: column; gap: 10px; text-align: right; margin: 15px 0; }
+    .pay-option { border: 1.5px solid var(--border); border-radius: 10px; padding: 12px; cursor: pointer; transition: 0.2s; }
+    .pay-option:hover, .pay-option.selected { border-color: var(--primary); background: #ecfdf5; }
+    .pay-option-title { font-weight: 700; font-size: 0.9rem; color: #0f172a; display: flex; align-items: center; justify-content: space-between; }
+    .pay-option-desc { font-size: 0.75rem; color: #64748b; margin-top: 4px; }
+
+    /* Admin Dashboard Panel */
+    .admin-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+    .stat-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 12px; text-align: center; }
+    .stat-val { font-size: 1.3rem; font-weight: 900; color: var(--primary); }
+    .stat-lbl { font-size: 0.7rem; color: var(--muted); font-weight: 600; margin-top: 4px; }
+    .admin-list-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--border); font-size: 0.8rem; text-align: right; }
+    .admin-actions button { padding: 4px 8px; border-radius: 4px; border: none; font-size: 0.7rem; font-weight: 700; cursor: pointer; }
+    .btn-del { background: #fee2e2; color: #991b1b; }
+
+    /* Forms */
     .form-group { text-align: right; margin-bottom: 12px; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 5px; }
-    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 5px; }
+    .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; }
 
     footer { text-align: center; margin-top: 50px; font-size: 0.75rem; color: var(--muted); padding: 20px 15px; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
+  <!-- Top Announcement Bar with Secret Admin Access -->
   <div class="top-bar">
-    <div>🇲🇦 المنصة الرسمية للوساطة الرقمية المباشرة</div>
-    <div>المحفظة: <span>0.00 MAD</span></div>
+    <div>🇲🇦 المنصة الوطنية للوساطة الرقمية</div>
+    <div class="admin-link" onclick="openAdminPrompt()">🔐 لوحة الإدارة (Admin)</div>
   </div>
 
   <header>
@@ -118,9 +124,9 @@
   </header>
 
   <div class="hero">
-    <div class="hero-badge">🚀 المنصة الذكية بدون سماسرة تقليديين</div>
-    <h1 id="txt-hero-title">Semsar سمسار | كراء وشراء العقارات والسيارات</h1>
-    <p id="txt-hero-desc">معاملات مباشرة، أسعار حقيقية بالدرهم، وتواصل مضمون مع أصحاب الملك الموثوقين.</p>
+    <div class="hero-badge">🚀 النظام الذكي لفتح الاتصال بالمالك فـ المغرب</div>
+    <h1 id="txt-hero-title">Semsar سمسار | كراء وشراء بدون سماسرة</h1>
+    <p id="txt-hero-desc">معاملات مباشرة، أسعار حقيقية بالدرهم، وضمان الجدية بين المالك والزبون.</p>
   </div>
 
   <div class="container">
@@ -132,43 +138,60 @@
       </div>
 
       <div class="search-input-box">
-        <input type="text" id="keywordSearch" placeholder="🔍 ابحث بالحي أو الموديل (مثال: المعاريف، Dacia، مالاباطا...)" oninput="renderListings()">
+        <input type="text" id="keywordSearch" placeholder="🔍 ابحث بالحي أو الموديل (المعاريف، Dacia...)" oninput="renderListings()">
       </div>
 
       <div class="filter-grid">
         <select id="cityFilter" onchange="renderListings()">
           <option value="all">📍 كل المدن فالمغرب</option>
-          <option value="Casablanca">الدار البيضاء (Casablanca)</option>
-          <option value="Marrakech">مراكش (Marrakech)</option>
-          <option value="Tanger">طنجة (Tanger)</option>
-          <option value="Rabat">الرباط (Rabat)</option>
-          <option value="Agadir">أكادير (Agadir)</option>
+          <option value="Casablanca">الدار البيضاء</option>
+          <option value="Marrakech">مراكش</option>
+          <option value="Tanger">طنجة</option>
+          <option value="Rabat">الرباط</option>
+          <option value="Agadir">أكادير</option>
         </select>
-        <input type="number" id="maxPrice" placeholder="أقصى ثمن بالدرهم (MAD)" oninput="renderListings()">
+        <input type="number" id="maxPrice" placeholder="أقصى ثمن (MAD)" oninput="renderListings()">
       </div>
     </div>
 
-    <!-- Listings -->
+    <!-- Listings Container -->
     <div class="listings-grid" id="listingsContainer"></div>
   </div>
 
-  <!-- Paywall Modal -->
+  <!-- Real Moroccan Payment Options Modal -->
   <div class="modal-overlay" id="payModal">
     <div class="modal">
-      <h3 style="font-size: 1.2rem; font-weight: 800;">تأكيد فتح الاتصال بالمالك</h3>
-      <p style="font-size: 0.85rem; color: #64748b; margin-top: 6px;">رسوم الخدمة الرقمية لضمان جدية الطلب وفلترة المتطفلين</p>
-      <div class="modal-price" id="modalFee">30 MAD</div>
-      <p style="font-size: 0.8rem; color: #059669; font-weight: 600;">✔️ يتم فتح رقم الواتساب والشات فوراً وبشكل دائم</p>
-      <button class="pay-btn" onclick="confirmPayment()">تأكيد الدفع ومراسلة المالك (Simuler Pay)</button>
+      <h3 style="font-size: 1.15rem; font-weight: 800;">تأكيد أداء رسوم فتح الاتصال</h3>
+      <div style="font-size: 2rem; font-weight: 900; color: var(--primary); margin: 8px 0;" id="modalFee">30 MAD</div>
+      <p style="font-size: 0.8rem; color: #64748b;">اختر طريقة الأداء المغربية المناسبة لك:</p>
+
+      <div class="pay-methods">
+        <div class="pay-option selected" onclick="selectPay(this)">
+          <div class="pay-option-title"><span>💳 بطاقة بنكية مغربية (CMI / YouCan Pay)</span> <input type="radio" checked></div>
+          <div class="pay-option-desc">فتح فوري بالبطاقة (CIH, Attijari, BMCE, وغيرها)</div>
+        </div>
+
+        <div class="pay-option" onclick="selectPay(this)">
+          <div class="pay-option-title"><span>🏦 تحويل فوري CIH / التجاري وفا</span> <input type="radio"></div>
+          <div class="pay-option-desc">RIB: 230 780 445566778800 11 (صيفط التوصيل فـ WhatsApp)</div>
+        </div>
+
+        <div class="pay-option" onclick="selectPay(this)">
+          <div class="pay-option-title"><span>🏢 وكالات Cash Plus / Wafacash</span> <input type="radio"></div>
+          <div class="pay-option-desc">الدفع كاش فـ أقرب وكالة برقم المعاملة</div>
+        </div>
+      </div>
+
+      <button class="unlock-btn" style="background:var(--primary);" onclick="confirmRealPayment()">تأكيد الأداء وتفعيل الشات فوراً ⚡</button>
       <br>
       <button class="close-btn" onclick="closeModal()">إلغاء</button>
     </div>
   </div>
 
-  <!-- Add Listing Modal (User can post) -->
+  <!-- User Add Listing Modal -->
   <div class="modal-overlay" id="addModal">
     <div class="modal">
-      <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 15px;">نشر إعلان جديد فـ Semsar</h3>
+      <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 12px;">نشر إعلان جديد فـ Semsar</h3>
       
       <div class="form-group">
         <label>نوع الإعلان:</label>
@@ -200,13 +223,43 @@
       </div>
 
       <div class="form-group">
-        <label>رقم الواتساب:</label>
+        <label>رقم الواتساب الخاص بالمالك:</label>
         <input type="text" id="newPhone" placeholder="+212600000000">
       </div>
 
-      <button class="pay-btn" onclick="addNewListing()">نشر الإعلان فوراً فـ المنصة 🚀</button>
+      <button class="unlock-btn" style="background:var(--primary);" onclick="addNewListing()">نشر الإعلان فـ المنصة 🚀</button>
       <br>
       <button class="close-btn" onclick="closeAddModal()">إلغاء</button>
+    </div>
+  </div>
+
+  <!-- SECRET ADMIN DASHBOARD MODAL -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal" style="max-width: 520px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h3 style="font-size: 1.2rem; font-weight: 800;">🔐 لوحة إدارة الشركة (Executive Dashboard)</h3>
+      </div>
+      
+      <!-- Stats KPIs -->
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-val" id="adminRevenue">0 MAD</div>
+          <div class="stat-lbl">مجموع المداخيل</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="adminUnlocks">0</div>
+          <div class="stat-lbl">عمليات الفتح المؤكدة</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="adminListingsCount">0</div>
+          <div class="stat-lbl">الإعلانات النشطة</div>
+        </div>
+      </div>
+
+      <h4 style="font-size: 0.9rem; text-align:right; margin-bottom:8px; font-weight:700;">إدارة الإعلانات النشطة:</h4>
+      <div id="adminListingsList" style="max-height: 200px; overflow-y:auto; border:1px solid var(--border); border-radius:8px;"></div>
+
+      <button class="close-btn" style="background:#0f172a; color:white; padding:8px 16px; border-radius:6px; margin-top:15px;" onclick="closeAdminModal()">إغلاق لوحة الإدارة</button>
     </div>
   </div>
 
@@ -215,7 +268,8 @@
   </footer>
 
   <script>
-    let data = [
+    // Initial Seed Data (Saved to localStorage on first launch)
+    const initialSeed = [
       {
         id: 1,
         type: 'realestate',
@@ -266,6 +320,17 @@
       }
     ];
 
+    // Persistence Layer (LocalStorage Database)
+    let data = JSON.parse(localStorage.getItem('semsar_data')) || initialSeed;
+    let totalRevenue = parseFloat(localStorage.getItem('semsar_revenue')) || 0;
+    let totalUnlocks = parseInt(localStorage.getItem('semsar_unlocks')) || 0;
+
+    function saveState() {
+      localStorage.setItem('semsar_data', JSON.stringify(data));
+      localStorage.setItem('semsar_revenue', totalRevenue.toString());
+      localStorage.setItem('semsar_unlocks', totalUnlocks.toString());
+    }
+
     let currentCategory = 'realestate';
     let selectedItem = null;
 
@@ -292,7 +357,7 @@
       });
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div style="text-align:center; padding:40px; color:#64748b;">لا توجد عروض مطابقة لبحثك حالياً. كن أول من ينشر إعلانه!</div>';
+        container.innerHTML = '<div style="text-align:center; padding:40px; color:#64748b;">لا توجد عروض مطابقة حالياً.</div>';
         return;
       }
 
@@ -303,11 +368,10 @@
             <div class="img-box">
               <img src="${item.img}" alt="${item.title}">
               <span class="badge-city">📍 ${item.city}</span>
-              <button class="fav-btn" onclick="toggleFav(this)">🤍</button>
             </div>
             <div class="card-body">
               <div class="header-info">
-                <div class="price-tag">${item.price} <small>MAD ${item.type === 'cars' ? '/ اليوم' : '/ الشهر'}</small></div>
+                <div class="price-tag">${item.price} <small style="font-size:0.8rem; color:#64748b;">MAD ${item.type === 'cars' ? '/ اليوم' : '/ الشهر'}</small></div>
                 ${item.verified ? '<span class="verified-tag">مُوثّق ورسمي ✅</span>' : ''}
               </div>
               <h3 class="listing-title">${item.title}</h3>
@@ -329,10 +393,6 @@
       });
     }
 
-    function toggleFav(btn) {
-      btn.innerText = btn.innerText === '🤍' ? '❤️' : '🤍';
-    }
-
     function openPayModal(id) {
       selectedItem = data.find(i => i.id === id);
       document.getElementById('modalFee').innerText = selectedItem.fee + ' MAD';
@@ -343,10 +403,23 @@
       document.getElementById('payModal').style.display = 'none';
     }
 
-    function confirmPayment() {
+    function selectPay(el) {
+      document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      el.querySelector('input').checked = true;
+    }
+
+    function confirmRealPayment() {
       closeModal();
       document.getElementById(`btn-${selectedItem.id}`).style.display = 'none';
       document.getElementById(`unlocked-${selectedItem.id}`).style.display = 'block';
+
+      // Record business revenue
+      totalRevenue += selectedItem.fee;
+      totalUnlocks += 1;
+      saveState();
+
+      alert(`✅ تم استلام مبلغ ${selectedItem.fee} درهم بنجاح! تم فتح بيانات المالك والشات المباشر.`);
     }
 
     function openAddModal() {
@@ -365,7 +438,7 @@
       const phone = document.getElementById('newPhone').value;
 
       if (!title || !price || !phone) {
-        alert('عافاك عمر جميع الخانات!');
+        alert('يرجى ملء جميع الخانات!');
         return;
       }
 
@@ -381,39 +454,82 @@
         price: price,
         fee: price > 3000 ? 30 : 20,
         img: defaultImg,
-        specs: type === 'cars' ? ['🚗 جديدة', '🛡️ تأمين', '✨ نظيفة'] : ['🛋️ مجهزة', '📍 موقع ممتاز'],
+        specs: type === 'cars' ? ['🚗 جديدة', '🛡️ تأمين شامل'] : ['🛋️ مجهزة بالكامل', '📍 موقع استراتيجي'],
         phone: phone,
         verified: true
       });
 
+      saveState();
       closeAddModal();
       currentCategory = type;
-      document.getElementById('tab-real').classList.toggle('active', type === 'realestate');
-      document.getElementById('tab-cars').classList.toggle('active', type === 'cars');
-      renderListings();
-      alert('مبروك! تم نشر إعلانك بنجاح فـ المنصة 🚀');
+      filterCategory(type);
+      alert('مبروك! تم نشر الإعلان وحفظه دائمًا فـ قاعدة بيانات المنصة 🚀');
+    }
+
+    /* SECRET ADMIN DASHBOARD LOGIC */
+    function openAdminPrompt() {
+      const code = prompt("🔐 أدخل الرمز السري للإدارة (Default: 2026):");
+      if (code === "2026") {
+        document.getElementById('adminRevenue').innerText = totalRevenue + " MAD";
+        document.getElementById('adminUnlocks').innerText = totalUnlocks;
+        document.getElementById('adminListingsCount').innerText = data.length;
+
+        const listContainer = document.getElementById('adminListingsList');
+        listContainer.innerHTML = '';
+        data.forEach(item => {
+          listContainer.innerHTML += `
+            <div class="admin-list-item">
+              <div>
+                <strong>${item.title}</strong> (${item.city}) - ${item.price} MAD
+              </div>
+              <div class="admin-actions">
+                <button class="btn-del" onclick="deleteListing(${item.id})">حذف 🗑️</button>
+              </div>
+            </div>
+          `;
+        });
+
+        document.getElementById('adminModal').style.display = 'flex';
+      } else if (code !== null) {
+        alert("❌ الرمز السري غير صحيح!");
+      }
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').style.display = 'none';
+    }
+
+    function deleteListing(id) {
+      if(confirm("واش متأكد باغي تحذف هاد الإعلان من المنصة؟")) {
+        data = data.filter(i => i.id !== id);
+        saveState();
+        closeAdminModal();
+        renderListings();
+        alert("تم حذف الإعلان بنجاح!");
+      }
     }
 
     function setLang(lang) {
       document.querySelectorAll('.lang-btns button').forEach(b => b.classList.remove('active'));
       if(lang === 'ar') {
         document.body.dir = 'rtl';
-        document.getElementById('txt-hero-title').innerText = 'Semsar سمسار | كراء وشراء العقارات والسيارات';
-        document.getElementById('txt-hero-desc').innerText = 'معاملات مباشرة، أسعار حقيقية بالدرهم، وتواصل مضمون مع أصحاب الملك الموثوقين.';
+        document.getElementById('txt-hero-title').innerText = 'Semsar سمسار | كراء وشراء بدون سماسرة';
+        document.getElementById('txt-hero-desc').innerText = 'معاملات مباشرة، أسعار حقيقية بالدرهم، وضمان الجدية بين المالك والزبون.';
         document.querySelectorAll('.lang-btns button')[0].classList.add('active');
       } else if(lang === 'fr') {
         document.body.dir = 'ltr';
         document.getElementById('txt-hero-title').innerText = 'Semsar | Immobilier & Voitures au Maroc';
-        document.getElementById('txt-hero-desc').innerText = 'Transactions directes, prix en MAD, et mise en relation certifiée sans intermédiaires.';
+        document.getElementById('txt-hero-desc').innerText = 'Mise en relation directe, prix réels en MAD et garantie de sérieux.';
         document.querySelectorAll('.lang-btns button')[1].classList.add('active');
       } else {
         document.body.dir = 'ltr';
-        document.getElementById('txt-hero-title').innerText = 'Semsar | Real Estate & Car Rentals in Morocco';
-        document.getElementById('txt-hero-desc').innerText = 'Direct transactions, real prices in MAD, and certified connections with owners.';
+        document.getElementById('txt-hero-title').innerText = 'Semsar | Direct Real Estate & Car Rentals';
+        document.getElementById('txt-hero-desc').innerText = 'Direct transactions, verified prices in MAD, and guaranteed seriousness.';
         document.querySelectorAll('.lang-btns button')[2].classList.add('active');
       }
     }
 
+    // Launch
     renderListings();
   </script>
 </body>
